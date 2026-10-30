@@ -94,12 +94,8 @@ app.use("/listings", listingsRouter);
 app.use("/listings/:id/reviews", reviewsRouter);   
 app.use("/", userRouter);
 
-app.listen(8080, () =>{
-    console.log("server is listening on the port");
-});
-
 app.get("/", (req, res) => {
-  res.render("listings/index"); 
+  res.render("listings"); 
 });
 
 app.all(/.*/, (req, res, next) =>{
@@ -114,5 +110,12 @@ app.use((err, req, res, next) =>{
     res.locals.hideFooter = ["/login", "/signup"].includes(req.path);
     next();
 });
+
+const port = process.env.PORT || 8080;
+app.listen(port, () => {
+  console.log(`server is listening on port ${port}`);
+});
+
+
 
 

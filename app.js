@@ -94,7 +94,7 @@ app.use("/listings", listingsRouter);
 app.use("/listings/:id/reviews", reviewsRouter);   
 app.use("/", userRouter);
 
-app.listen(3000, () =>{
+app.listen(8080, () =>{
     console.log("server is listening on the port");
 });
 

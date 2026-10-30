@@ -98,6 +98,10 @@ app.listen(3000, () =>{
     console.log("server is listening on the port");
 });
 
+app.get("/", (req, res) => {
+  res.render("listings/index"); 
+});
+
 app.all(/.*/, (req, res, next) =>{
     next(new ExpressError(404, "page not found."));
 });
@@ -109,7 +113,6 @@ app.use((err, req, res, next) =>{
     res.locals.error = res.locals.error || [];
     res.locals.hideFooter = ["/login", "/signup"].includes(req.path);
     next();
-    // res.status(statusCode).render("listings/error.ejs", { err });
 });
 
 

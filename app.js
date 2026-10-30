@@ -95,11 +95,17 @@ app.use("/listings/:id/reviews", reviewsRouter);
 app.use("/", userRouter);
 
 app.get("/", (req, res) => {
-  res.render("listings"); 
+  res.render("/listings"); 
 });
 
 app.all(/.*/, (req, res, next) =>{
     next(new ExpressError(404, "page not found."));
+});
+
+app.use((err, req, res, next) => {
+  console.log("ERROR:", err);
+  let { statusCode = 500, message = "something went wrong" } = err;
+  res.status(statusCode).send(message);
 });
 
 app.use((err, req, res, next) =>{

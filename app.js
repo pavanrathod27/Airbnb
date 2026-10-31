@@ -95,7 +95,7 @@ app.use("/listings/:id/reviews", reviewsRouter);
 app.use("/", userRouter);
 
 app.get("/", (req, res) => {
-  res.render("/listings"); 
+  res.redirect("/listings"); 
 });
 
 app.all(/.*/, (req, res, next) =>{

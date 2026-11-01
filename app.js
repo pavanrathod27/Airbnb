@@ -16,6 +16,7 @@ const Review = require("./models/review.js");
 const listingsRouter = require("./routes/listing.js");
 const reviewsRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
+const categoryRouter = require("./routes/category.js");
 
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
@@ -91,7 +92,8 @@ app.use((req, res, next) =>{
 });
 
 app.use("/listings", listingsRouter); 
-app.use("/listings/:id/reviews", reviewsRouter);   
+app.use("/listings/:id/reviews", reviewsRouter);  
+app.use("/category", categoryRouter); 
 app.use("/", userRouter);
 
 app.get("/", (req, res) => {

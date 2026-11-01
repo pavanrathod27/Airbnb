@@ -26,6 +26,11 @@
         font-size: 0.7rem;
     }
 
+    .filter-link {
+    text-decoration: none;
+    color: inherit;
+    }
+
     .tax-info {
         display: none;
     }
@@ -70,33 +75,41 @@
         }
     }
 </style>
-
-<div id="filters">
+    <div id="filters">
     <div class="filters-group">
-    <div class="filter">
-        <div>
-            <i class="fa-solid fa-fire"></i>
-        </div>
-        <p>Trending</p>
-    </div> 
 
-    <div class="filter">
-        <div>
-            <i class="fa-solid fa-bed"></i>
+    <a href="/category/trending" class="filter-link">
+        <div class="filter">
+            <div>
+                <i class="fa-solid fa-fire"></i>
+            </div>
+            <p>Trending</p>
         </div>
-        <p>Bed</p>
-    </div> 
+    </a>
+
+    <a href="/category/bed" class="filter-link">
+        <div class="filter">
+            <div>
+                <i class="fa-solid fa-bed"></i>
+            </div>
+            <p>Bed</p>
+        </div>
+    </a>
+
     <div class="filter">
         <div>
             <i class="fa-solid fa-mountain-city"></i></div>
         <p>Iconic cities</p>
     </div> 
 
-    <div class="filter">
-        <div>
-            <i class="fa-brands fa-fort-awesome"></i>        </div>
-        <p>Castles</p>
-    </div> 
+    <a href="/category/castles" class="filter-link">
+        <div class="filter">
+            <div>
+                <i class="fa-brands fa-fort-awesome"></i>
+            </div>
+            <p>Castles</p>
+        </div>
+    </a>
 
     <div class="filter">
         <div>
@@ -104,17 +117,14 @@
         <p>Amazing Pools</p>
     </div> 
 
-    <div class="filter">
-        <div>
-            <i class="fa-solid fa-wheat-awn"></i>        </div>
-        <p>Farms</p>
-    </div> 
-    <div class="filter">
-        <div>
-            <i class="fa-solid fa-fire"></i>
+    <a href="/category/farms" class="filter-link">
+        <div class="filter">
+            <div>
+                <i class="fa-solid fa-wheat-awn"></i>
+            </div>
+            <p>Farms</p>
         </div>
-        <p>Trending</p>
-    </div> 
+    </a>
 
     <div class="filter">
         <div>
@@ -131,8 +141,9 @@
     <div class="filter">
         <div>
             <i class="fa-solid fa-temperature-arrow-up"></i>        </div>
-        <p>High temparature</p>
+        <p>High Temperature</p>
     </div>
+
     </div>
 
     <div class="tax-toggle">
@@ -142,7 +153,7 @@
     </div>
     </div> <%# toggle ending %>
 
-    </div>
+</div>
 
 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
     <% for(let listing of allListings) { %>
@@ -153,7 +164,7 @@
     <div class="card-body">
     <p class="card-text">
         <b><%= listing.title %></b><br>
-        &#8377 <%= listing.price.toLocaleString("en-IN") %>/night
+        &#8377; <%= listing.price.toLocaleString("en-IN") %>/night
         <i class="tax-info">&nbsp; <b>+18%</b> GST</i>
     </p>
     </div>
@@ -166,7 +177,7 @@
     let taxSwitch = document.getElementById("flexSwitchCheckDefault");
     taxSwitch.addEventListener("click", () => {
         let taxInfo = document.getElementsByClassName("tax-info");
-        for(info of taxInfo){
+        for(let info of taxInfo){
             if(info.style.display != "inline"){
                 info.style.display = "inline";
             }else{
